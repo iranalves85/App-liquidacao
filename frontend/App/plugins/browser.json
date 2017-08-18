@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.iran.teste"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.iran.teste"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.iran.teste"
+        },
+        "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "com.iran.teste"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.iran.teste"
+        }
+    }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html ng-app="App">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet-theme-android.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet-theme-ios.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+        <!-- javascript -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/angular.min.js"></script>
+        <script type="text/javascript" src="scripts/controllerData.js"></script>
+        
+        <title>Home</title>
+                    
+    </head>
+    <body>
+
+        <!-- .bar sempre a parte de .content --> 
+        <header class="bar bar-nav">
+            <a class="icon icon-left-nav pull-left" href="home.html" data-transition="slide-out"></a>
+            <h1 class="title">Criar</h1>
+        </header>
+
+        <div class="content">
+
+            <div class="newView" ng-controller="newView">
+                
+                <form ng-submit="addView()" method="POST">
+                    <input type="hidden" ng-model="add.perfil" name="view[perfil]" value="1" >
+                    <input type="hidden" ng-model="add.latitude" name="view[latitude]" value="-5.0000000" >
+                    <input type="hidden" ng-model="add.longitude" name="view[longitude]" value="-5.0000000" >
+                    <textarea name="view[produto]" ng-model="add.produto" placeholder="O que encontrou?"></textarea>
+                    <textarea name="view[descricao]" ng-model="add.descricao" placeholder="Fale um pouquinho mais sobre isto."></textarea>
+                    <select ng-model="add.categoria" name="view[categoria]">
+                        <option value="1" selected>Camiseta</option>
+                        <option value="2">Shorts</option>
+                    </select>
+                    <span>R$ </span><input type="number" ng-model="add.preco" name="view[preco]" placeholder="Qual o valor?">
+                    <hr>
+                    <input class="btn btn-default btn-block" ng-model="add.foto" type="button" name="view[fotos]" ng-click="getImage()" value="Insira uma foto." >
+                    <span>Até </span><input type="text" ng-model="add.periodo" name="view[periodo]" placeholder="01/01/2999" >                    
+                    <select name="view[visibilidade]" ng-model="add.visibilidade">
+                        <option value="2" selected>Público</option>
+                        <option value="1">Privado</option>
+                    </select>
+                    <input type="submit" class="btn btn-positive btn-block" value="Enviar" >
+                </form>
+                
+            </div><!-- #home -->
+
+        </div><!-- content -->
+
+    </body>
+</html>

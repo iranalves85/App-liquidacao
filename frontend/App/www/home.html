@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html ng-app="App">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta http-equiv="Content-Security-Policy" content="" />
+
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet-theme-android.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet-theme-ios.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+        <!-- javascript -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/angular.min.js"></script>
+        <script type="text/javascript" src="scripts/controllerData.js"></script>
+        
+        <!-- Google Maps -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcyM3vdtgE7UQxm0sVFKERnBGezUy18s"></script>
+        <script type="text/javascript" src="scripts/maps.js"></script>
+                
+        <title>Home - Lista de Views</title>
+        
+    </head>
+    <body>
+        
+        <header class="bar bar-tab bar-bottom">
+            
+            <!-- Links de navegação -->
+            <a class="tab-item" href="profile.html" data-transition="slide-in" >
+                <span class="icon icon-person"></span>
+                <span class="tab-label">Perfil</span>
+            </a>
+
+            <a class="tab-item" href="friends.html" data-transition="slide-in">
+                <span class="icon icon-list"></span>
+                <span class="tab-label">Seu Amigos</span>
+            </a>
+
+            <a class="tab-item" href="config.html"  data-transition="slide-in">
+                <span class="icon icon-gear"></span>
+                <span class="tab-label">Configurações</span>
+            </a>
+
+        </header><!-- Nav Top -->
+        
+        <div class="content" ng-controller="ViewDataList">
+
+            <!-- Mapa com indicações dos locais com views próximos -->
+            <div class="map"> 
+                
+                <div id="map-canvas"></div>
+
+                <a href="maps.html" data-transition="slide-in">
+                    <span class="botao icon-botao-acao-location">Localização Atual</span>
+                </a>
+                <a href="newView.html" data-transition="slide-in">
+                    <span class="botao icon-botao-acao-newview">Novo View</span>
+                </a>
+                
+            </div><!-- map -->
+
+            <div id="home" class="home"> 
+
+                <ul class="table-view">
+                    
+                    <li ng-repeat="item in listItem" class="table-view-cell media view-list" >
+                        
+                        <a href="view_p.html?id={{ item.ID }}" data-transition="slide-in"></a>
+                        <!-- ao utilizar o link navigate-right ele quebra a formatação -->
+                        <div class="media-object pull-left">
+                            <!-- avatar -->
+                            <img src="http://placehold.it/42x42" alt="{{ item.fotos }}" height="64px">
+                        </div>
+                        <div class="media-body">
+                            <span class="float-distance">
+                                <!-- Distância atual do view -->
+                                {{ item.latxlong }}
+                            </span>
+                            <p>
+                                <!-- descrição do view -->
+                                <a href="profile.html" data-transition="slide-in" class="nome-usuario">{{ item.usuario }}</a> encontrou <a href="view_p.html?id={{ item.id }}" data-transition="slide-in" class="categoria-view">{{ item.produto }}</a> a partir de R$ {{ item.preco }}.
+                            </p>
+                            <p class="share">
+                                <!-- share links -->
+                                <a class="action icon-like">Curtir</a>
+                                <a class="action icon-share">Compartilhar</a>
+                                <a class="action icon-rota">Ver rota</a>
+                            </p>
+                        </div>
+                    </li><!-- view-list -->                    
+                    
+                </ul>
+                
+            </div><!-- #home -->
+            
+            
+            
+            <script>
+                window.initialize();                                
+            </script>
+
+        </div><!-- content -->
+        
+
+    </body>
+</html>

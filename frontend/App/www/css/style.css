@@ -1,0 +1,166 @@
+/*
+@amarelo = #febb00;
+@amarelo_claro = #fcffd1;
+@verde = #0ea37b;
+@preto = #373737;
+@cinza = #a9a9a9;
+@cinza_claro = #efefec;
+@bege = #f1d997;
+*/
+
+body{
+    
+}
+
+a{
+    color: #0ea37b;
+    font-weight: bolder;
+}
+
+input, .btn{
+    box-shadow: none;
+    border: 0px !important;
+}
+
+.btn{
+    background-color: #a9a9a9;
+    color: #fff;
+    
+}
+
+.btn-positive{
+    background-color: #0ea37b;
+}
+
+.botao{
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-indent: -9000px;
+}
+
+.icon-botao-acao-location{
+    background-image: url(../img/location.png);
+    top: 30%;
+}
+
+.icon-botao-acao-newview{
+    background-image: url(../img/newview.png);
+}
+
+.content{
+    background-color: #efefec;
+}
+
+.content .social-login,
+.content .login{
+    padding: 20px;
+    background-color: #fcffd1;
+}
+
+.bar{
+    background-color: #fff;
+    border-bottom: 3px solid #febb00;
+    box-shadow: none;
+}
+
+.social-login{
+    background-color: #fff !important;
+    text-align: center;
+}
+
+.social-login h5{
+    margin-top: 0;
+}
+
+.login .icon,
+.profile .icon{
+    display: block;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}
+
+.profile,
+.config,
+.view_e .description,
+.view_p .description{
+    padding: 40px;
+}
+
+/* formulário de criar newView*/
+.newView{
+    padding: 40px;
+    background-color: #fff;
+}
+
+.newView input[type='text'],
+.newView select,
+.newView textarea{
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.view_p .description h2{
+   font-weight: 100;
+   line-height: initial;
+}
+
+.content .home{
+    padding: 0 !important;
+}
+
+.view-list{
+    background-color: #fff;
+}
+
+.view-list div{
+    padding: 0;
+    background-color: transparent;
+    
+}
+
+.view-list .float-distance{
+    position: absolute;
+    font-size: 10px;
+    right: 15px;
+    top: 2px;
+    color: #777;
+}
+
+.view-list .share{
+    display: block;
+    margin-top: 10px;
+}
+
+.action{
+    position: relative;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-color: #ccc;
+    /*background-image: url(../img/share-icon.png);*/
+    background-size: auto 22px;
+    background-position: 0px 22px;
+    text-indent: -9000px;
+}
+
+.map{
+    height: 70%;
+}
+
+#map{
+    height: 100%;
+}
+
+#map-canvas{
+    height: 100%;    
+}

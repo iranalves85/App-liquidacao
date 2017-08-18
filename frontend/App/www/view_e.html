@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet-theme-android.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/css/ratchet-theme-ios.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        
+        <!-- javascript -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/ratchet.min.js"></script>
+        
+        <title>View - Estabelecimento</title>
+    </head>
+    <body>
+        
+        <!-- .bar sempre a parte de .content --> 
+        <header class="bar bar-nav">
+            <a class="icon icon-left-nav pull-left" href="maps.html" data-transition="slide-out"></a>
+            
+            <span class="share">
+                <a class="action icon-like">Curtir</a>
+                <a class="action icon-share">Compartilhar</a>
+                <a class="action icon-rota">Ver rota</a>
+            </span>
+            
+        </header>
+        
+        <div class="content">
+            
+            <!-- Mapa com indicações dos locais com views próximos -->
+            <div class="gallery">
+                <img src="http://www.biqbeneficios.com.br/images/imgBanner_Estabelecimento.jpg" />                
+            </div><!--gallery -->
+            
+            <div id="view_e" class="view_e"> 
+                
+                <div class="description">
+                    <h2>PC Eletrônicas</h2>
+                    <p>
+                        Peças e componentes eletrônicos para pc's e mac's.
+                    </p>
+                    <p>
+                        Fundada à mais de 10 anos<br />
+                        Cadastrado à <strong>4 meses</strong>
+                    </p>
+                    <p>
+                        <a href="http://www.pceletronicas.com.br" data-ignore="push" target="_blank">pceletronicas.com.br</a>
+                    </p>
+                </div>
+                
+                <ul id="views" class="views table-view">
+                    <li class="table-view-cell media view-list">
+                        <h3>Publicações mais relevantes</h3>
+                    </li>
+                    <li class="table-view-cell media view-list">
+                        <!-- ao utilizar o link navigate-right ele quebra a formatação -->
+                        <div class="media-object pull-left">
+                            <!-- avatar -->
+                            <img src="http://placehold.it/42x42" height="64px">
+                        </div>
+                        <div class="media-body">
+                            <span class="float-distance">
+                                <!-- Distância atual do view -->
+                                1,5 km
+                            </span>
+                            <p>
+                                <!-- descrição do view -->
+                                <a href="" class="nome-usuario">@Usuário</a> viu uma promoção de <a href="" class="categoria-view">Produto</a> a partir de R$ 0,00.
+                            </p>
+                            <p class="share">
+                                <a class="action icon-like">Curtir</a>
+                                <a class="action icon-share">Compartilhar</a>
+                                <a class="action icon-rota">Ver rota</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="table-view-cell media view-list">
+                        <!-- ao utilizar o link navigate-right ele quebra a formatação -->
+                        <div class="media-object pull-left">
+                            <!-- avatar -->
+                            <img src="http://placehold.it/42x42" height="64px">
+                        </div>
+                        <div class="media-body">
+                            <span class="float-distance">
+                                <!-- Distância atual do view -->
+                                1,5 km
+                            </span>
+                            <p>
+                                <!-- descrição do view -->
+                                <a href="" class="nome-usuario">Usuário</a> viu uma promoção de <a href="" class="categoria-view">Produto</a> a partir de R$ 0,00.
+                            </p>
+                            <p class="share">
+                                <a class="action icon-like">Curtir</a>
+                                <a class="action icon-share">Compartilhar</a>
+                                <a class="action icon-rota">Ver rota</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="table-view-cell media view-list">
+                        <!-- ao utilizar o link navigate-right ele quebra a formatação -->
+                        <div class="media-object pull-left">
+                            <!-- avatar -->
+                            <img src="http://placehold.it/42x42" height="64px">
+                        </div>
+                        <div class="media-body">
+                            <span class="float-distance">
+                                <!-- Distância atual do view -->
+                                1,5 km
+                            </span>
+                            <p>
+                                <!-- descrição do view -->
+                                <a href="" class="nome-usuario">Usuário</a> viu uma promoção de <a href="" class="categoria-view">Produto</a> a partir de R$ 0,00.
+                            </p>
+                            <p class="share">
+                                <a class="action icon-like">Curtir</a>
+                                <a class="action icon-share">Compartilhar</a>
+                                <a class="action icon-rota">Ver rota</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="table-view-cell view-list">
+                        <p>
+                            <a class="btn btn-block" href="views.html" data-transition="slide-in">Veja mais</a>
+                        </p>
+                    </li>
+                </ul>
+                
+                <ul id="reviews" class="reviews table-view">
+                    <li class="table-view-cell view-list">
+                        <h3>Últimas resenhas</h3>
+                    </li>
+                    <li class="table-view-cell media view-list">
+                        <div class="media-body">
+                            <p>
+                                <!-- descrição do view -->
+                               Atendentes simpaticos e prestativos. Recomendo os pendrives de bichinhos, são lindos. 3 de dezembro de 2015
+                            </p>
+                            <p>
+                               Por <a href="" class="nome-usuario">Usuário</a> (NOME DO BADGE)
+                            </p>
+                        </div>
+                    </li>
+                     <li class="table-view-cell media view-list">
+                        <div class="media-body">
+                            <p>
+                                <!-- descrição do view -->
+                               Atendentes simpaticos e prestativos. Recomendo os pendrives de bichinhos, são lindos. 3 de dezembro de 2015
+                            </p>
+                            <p>
+                               Por <a href="" class="nome-usuario">Usuário</a> (NOME DO BADGE)
+                            </p>
+                        </div>
+                    </li>
+                     <li class="table-view-cell media view-list">
+                        <div class="media-body">
+                            <p>
+                                <!-- descrição do view -->
+                               Atendentes simpaticos e prestativos. Recomendo os pendrives de bichinhos, são lindos. 3 de dezembro de 2015
+                            </p>
+                            <p>
+                               Por <a href="" class="nome-usuario">Usuário</a> (NOME DO BADGE)
+                            </p>
+                        </div>
+                    </li>
+                    <li class="table-view-cell view-list">
+                        <p>
+                            <a class="btn btn-block" href="review.html" data-transition="slide-in">Veja mais</a>
+                        </p>
+                    </li>
+                </ul>                
+                
+            </div>
+            
+            <script>
+                /* Only needed if you want to fire a callback*/
+                console.log("Tudo bem");
+                
+            </script>
+            
+        </div><!-- content -->
+        
+    </body>
+</html>
