@@ -1,18 +1,16 @@
-{   
-    "name" : "makingpie/app-backend",
-    "description" : "Backend do app de views de promoções",    
-    "authors": [
-        {
-            "name": "Iran Alves",
-            "email": "iranjosealves@gmail.com",
-            "homepage": "http://makingpie.com.br",
-            "role": "Developer"
-        }
-    ],    
-    "require" : {
-        "slim/slim" : "1.6.7",
-        "zendframework/zend-json" : "2.5.1",
-        "catfan/medoo" : "0.9.8"
+{
+    "name": "makingpie/app-backend",
+    "description": "Backend do app de views de promoções",
+    "authors": [{
+        "name": "Iran Alves",
+        "email": "iranjosealves@gmail.com",
+        "homepage": "http://makingpie.com.br",
+        "role": "Developer"
+    }],
+    "require": {
+        "slim/slim": ">=3.9.1",
+        "zendframework/zend-json": ">=2.5.1",
+        "catfan/medoo": ">=0.9.8"
     },
-    "license" : "proprietary"
+    "license": "proprietary"
 }
