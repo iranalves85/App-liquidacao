@@ -18,9 +18,8 @@ define('_SMTP_SECURE_', 'tls');  // Enable TLS encryption, `ssl` also accepted
 define('_PORT_', 587);   //Porta
 
 //define Name_Alerts
-define('_PROGRESS_', 'Em Progresso'); //Password de email
-define('_WARNING_', 'Atenção');  // Enable TLS encryption, `ssl` also accepted
-define('_DANGER_', 'Em Atraso');   //Porta
+define('_ACTIVE_', 'Ativo'); //Password de email
+define('_OUT_', 'Expirado');  // Enable TLS encryption, `ssl` also accepted
 
 $config = [
     'settings' => [

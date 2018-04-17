@@ -1,6 +1,6 @@
 <?php 
 
-namespace App;
+namespace Core\Profile;
 
 class Login{
 
@@ -43,7 +43,41 @@ class Login{
         endif;
     }
 
+    function getSocialLogin(){
+        
+    }
+
+    //Se usuario deslogado, direciona para tela de login
+    function userLogout(\Psr\Http\Message\ResponseInterface $response){
+        ob_end_clean();
+        session_destroy();
+        setcookie('gafp');
+        setcookie('gafp-user');
+        return $response->withStatus(200)->withHeader('Location', _PATH_); 
+    }
+
+    /*
+        ##### Funções de verificação de login
+        Retorna se usuarios esta logado, sim ou não
+    */
+    function isLogged(){        
+        if( isset($_SESSION['user']) ):
+            return true;
+        else:
+            return false;
+        endif;
+    }
+
+    function isCookieValid(){ 
+        if( isset($_COOKIE['gafp']) && password_verify( $this->user['email'], $_COOKIE['gafp']) ):
+            return true;
+        else:
+            return false;
+        endif;
+    }
+
+    function currentUser(){ 
+        return $_SESSION['user'];
+    }
+
 }
-
-
-    

@@ -10,19 +10,19 @@
 
 namespace Core;
 
-use Badge;
-use Business;
-use Category;
-use Comment;
-use Connect;
-use Map;
-use Product;
-use Profile\User;
-use Profile\Config;
-use Profile\Friends;
-use Profile\Login;
-use Interfaces\BadgeInterface;
-use Interfaces\UserInterface as UserInterface;
+use Core\Badge as Badge;
+use Core\Business as Business;
+use Core\Category as Category;
+use Core\Comment as Comment;
+use Core\Connect as Connect;
+use Core\Map as Map;
+use Core\Product as Product;
+use Core\Profile\User;
+use Core\Profile\Config as Config;
+use Core\Profile\Friends as Friends;
+use Core\Profile\Login as Login;
+use Core\Interfaces\BadgeInterface as BadgeInterface;
+use Core\Interfaces\UserInterface as UserInterface;
 
 class App{
 
@@ -33,10 +33,9 @@ class App{
     public $user;
     public $connect;
     
-    
     function __construct(){
         $user = $this->user();
-        $connect = $this->connect();
+        $connect = $this->connect();        
     }   
 
     function connect(){
@@ -44,7 +43,7 @@ class App{
     }
 
     function user(){
-        return new UserInterface($connect);
+        return new Badge($connect);
     }
 
     //Função que verifica var retorno de resultado de query no banco

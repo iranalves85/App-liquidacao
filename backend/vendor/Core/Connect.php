@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Core;
 
 class Connect{
 
@@ -11,7 +11,7 @@ class Connect{
     public      $pdo;
     protected   $tb;
 
-    function __construct($prefix = ''){
+    function __construct($prefix = _PREFIX_){
         
         $server     = _HOST_;
         $bd         = _DATABASE_;
@@ -34,7 +34,7 @@ class Connect{
     }
 
     public function isConnected(){
-
+        
     }
 
 }

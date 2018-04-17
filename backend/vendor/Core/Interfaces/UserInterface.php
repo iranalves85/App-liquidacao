@@ -1,7 +1,7 @@
 <?php
 
 namespace Core\Interfaces;
-
+use Core\Connect as Connect;
 
 interface UserInterface{
 
@@ -18,12 +18,12 @@ interface UserInterface{
     public function getUsers( $order);
 
     /* ADD */    
-    public function addUser($data);
+    public function addUser(Connect $connect, $id, $data);
 
     /* UPDATE */
-    public function updateUser($id, $data);
+    public function updateUser(Connect $connect, $id, $data);
 
     /*DELETE*/
-    public function deleteUser($id);
+    //public function deleteUser($id);
 
 }

@@ -1,14 +1,18 @@
 <?php 
 
 namespace Core;
+use Core\Interfaces\UserInterface;
+use Core\Connect as Connect;
+use Core\User as User;
 
-class User{
+
+class User extends Login implements UserInterface{
 
     public $connect;
     public $user;
     
     //Contrução da classe
-    public function __construct( \Gafp\Connect $connect ){
+    public function __construct( \Core\Connect $connect ){
         $this->initSession();
         $this->connect = $connect;
     }
@@ -47,7 +51,7 @@ class User{
     } 
 
     /* Insere um único usuário */
-    function addUser( \Gafp\Connect $connect, $projectID, $data ){
+    function addUser( Connect $connect, $projectID, $data ){
         // Retorna id de empresa relacionado ao projeto
         $result = $connect->pdo->get('project',
             ['company'],
@@ -66,7 +70,7 @@ class User{
     } 
 
     /* Insere um único usuário */
-    function updateUser( \Gafp\Connect $connect, $userID, $data ){
+    function updateUser( Connect $connect, $userID, $data ){
         
         $user_data = [];
         $columnToSerialize = ['area', 'leader'];
@@ -104,8 +108,8 @@ class User{
 
     /*
         ##### Sessões de usuário
+        //Iniciando sessão
     */
-    //Iniciando sessão
     function initSession(){
         ob_start();
         session_start();
@@ -129,40 +133,6 @@ class User{
             return false;
         endif;
     }
-
-    /*
-        ##### Funções de verificação de login
-    */
-    //Retorna se usuarios esta logado, sim ou não
-    function isLogged(){        
-        if( isset($_SESSION['user']) ):
-            return true;
-        else:
-            return false;
-        endif;
-    }
-
-    function isCookieValid(){ 
-        if( isset($_COOKIE['gafp']) && password_verify( $this->user['email'], $_COOKIE['gafp']) ):
-            return true;
-        else:
-            return false;
-        endif;
-    }
-
-    function currentUser(){ 
-        return $_SESSION['user'];
-    }
-
-    //Se usuario deslogado, direciona para tela de login
-    function logout(\Psr\Http\Message\ResponseInterface $response){
-        ob_end_clean();
-        session_destroy();
-        setcookie('gafp');
-        setcookie('gafp-user');
-        return $response->withStatus(200)->withHeader('Location', _PATH_); 
-    }
-
 
     /* Adicionar um novo usuário ou atualizar existente no sistema */
     function newUser($data){
@@ -227,7 +197,7 @@ class User{
     }
 
     /*Se usuário não tiver acesso finaliza função */
-    function user_has_access(\Gafp\User $user){
+    function user_has_access(User $user){
         //Se usuário não estiver logado e permissão diferente de 'superuser'
         if( ! $user->isLogged() && $user->type_user != 'superuser' ):
             return "Access Not Authorized.";

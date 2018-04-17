@@ -7,24 +7,30 @@
  */
 
 /**
- * Description of Login
+ * Description of Amigos
  *
  * @author Iran
  */
-class Login {
-    
+
+use Core\Profile\Login as Login;
+
+class Friends extends Login {
     public function __construct() {
         
     }
     
     //Login normal
-    public function getLogin(){
+    public function getFriends(){
 
     }
     
     //Login através das redes sociais
-    public function getSocialLogin(){
+    public function addFriends(){
 
     }
     
+    //Login através das redes sociais
+    public function deleteFriends(){
+
+    }
 }

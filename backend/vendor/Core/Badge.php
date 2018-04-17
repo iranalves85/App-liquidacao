@@ -1,6 +1,7 @@
 <?php
 
-namespace App;
+namespace Core;
+use Core\Interfaces\BadgeInterface;
 
 class Badge extends Connect implements BadgeInterface{
 
@@ -8,7 +9,7 @@ class Badge extends Connect implements BadgeInterface{
     /*###### GET ###### */
 
     /* Retorna lista de modelos */
-    function getBadge( \Gafp\User $user, $id){
+    public function getBadge( \Core\User $user, $id){
         
         //Se usuário não estiver logado e permissão diferente de 'superuser'
         $this->user_has_access($user);
@@ -29,7 +30,7 @@ class Badge extends Connect implements BadgeInterface{
     }
 
     /* Retorna lista de modelos */
-    function getListBadge( \Gafp\User $user, $order = ['order' => 'date_created', 'by' => 'DESC']){
+    public function getListBadge( \Core\User $user, $order = ['order' => 'date_created', 'by' => 'DESC']){
         
         //Se usuário não estiver logado e permissão diferente de 'superuser'
         $this->user_has_access($user);
@@ -52,7 +53,7 @@ class Badge extends Connect implements BadgeInterface{
     /*###### ADD ###### */
 
     /* Adiciona um novo modelo */
-    function addBadge( \Gafp\User $user,  $data){
+    public function addBadge( \Core\User $user,  $data){
         
         $this->user_has_access($user); //Verifica permissão
 
@@ -82,7 +83,7 @@ class Badge extends Connect implements BadgeInterface{
     }
 
     /* Retorna lista de modelos */
-    function updateBadge( \Gafp\User $user, $id, $data){
+    public function updateBadge( \Core\User $user, $id, $data){
         
         //Se usuário não estiver logado e permissão diferente de 'superuser'
         $this->user_has_access($user);
@@ -125,7 +126,7 @@ class Badge extends Connect implements BadgeInterface{
     }
 
     /* Deletar um modelo */
-    function deleteBadge( \Gafp\User $user,  $ID){
+    public function deleteBadge( \Core\User $user,  $ID){
         
         $this->user_has_access($user); //Verifica permissão
 

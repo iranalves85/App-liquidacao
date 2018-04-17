@@ -11,7 +11,10 @@
  *
  * @author Iran
  */
-class Config {
+
+use Core\Profile\User as User;
+ 
+class Config extends User{
     
     public function __construct() {
         
