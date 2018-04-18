@@ -56,10 +56,61 @@ class Login{
         return $response->withStatus(200)->withHeader('Location', _PATH_); 
     }
 
+
+    /* 
+    - Registrar sessão do usuário
+    - Retornar dados importantes
+    */
+    protected function registerUserSession($data){
+
+        //Executa Query
+        $result = $this->connect->userLogin($data);
+
+        //Retorna resultado
+        if(!$result):
+            $msgError = ['error' => "Usuário ou senha incorretos."];
+            return $msgError;            
+        else:
+            //Registra dados da sessão
+            $session = $this->registerSession($result);            
+            //Retorna dados
+            return $session;
+        endif;
+    }
+
+    //Registrando sessão
+    protected function registerSession($userData){
+        
+        //Gerando hash
+        $cookieToken = password_hash( $userData['email'], CRYPT_BLOWFISH);
+        $_SESSION['user'] = $userData; //adiciona dados do usuário na sessão
+        $this->user = $_SESSION['user'];
+        
+        //Setando cookies
+        $cookie = setcookie('gafp', $cookieToken, time()+172800, _PATH_ );
+
+        //Se sessão inicializada e cookie setado
+        if( isset( $_SESSION['user'] ) && $cookie ):
+            return true;
+        else:
+            return false;
+        endif;
+    }
+
     /*
         ##### Funções de verificação de login
         Retorna se usuarios esta logado, sim ou não
     */
+
+    /*
+        ##### Sessões de usuário
+        //Iniciando sessão
+    */
+    function initSession(){
+        ob_start();
+        session_start();
+    }
+    
     function isLogged(){        
         if( isset($_SESSION['user']) ):
             return true;

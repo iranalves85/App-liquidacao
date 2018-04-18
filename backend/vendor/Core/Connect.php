@@ -11,8 +11,9 @@ class Connect{
     public      $pdo;
     protected   $tb;
 
-    function __construct($prefix = _PREFIX_){
+    function __construct(){
         
+        $prefix     = _PREFIX_;
         $server     = _HOST_;
         $bd         = _DATABASE_;
         $user       = _DB_USER_;

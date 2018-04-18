@@ -11,8 +11,6 @@ interface UserInterface{
      *
      * @return array[]
      */
-    public function login($id);
-
     public function getUser( $order);
 
     public function getUsers( $order);
@@ -24,6 +22,6 @@ interface UserInterface{
     public function updateUser(Connect $connect, $id, $data);
 
     /*DELETE*/
-    //public function deleteUser($id);
+    public function deleteUser($id);
 
 }

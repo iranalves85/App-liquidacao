@@ -12,9 +12,10 @@
  * @author Iran
  */
 
-use Core\Profile\Login as Login;
+namespace Core\Profile;
+use Core\Profile\User as User;
 
-class Friends extends Login {
+class Friends extends User {
     public function __construct() {
         
     }

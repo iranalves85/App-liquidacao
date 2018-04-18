@@ -1,9 +1,11 @@
 <?php
 
-namespace Core;
-use Core\Interfaces\BadgeInterface;
+namespace Core\Profile;
 
-class Badge extends Connect implements BadgeInterface{
+use Core\Profile\User as User;
+use Core\Interfaces\BadgeInterface as BadgeInterface;
+
+class Badge extends User implements BadgeInterface{
 
 
     /*###### GET ###### */
