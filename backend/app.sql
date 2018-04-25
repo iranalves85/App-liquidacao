@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Abr-2018 às 19:19
+-- Generation Time: 25-Abr-2018 às 05:05
 -- Versão do servidor: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -48,15 +48,13 @@ INSERT INTO `badge` (`ID`, `name`, `value`, `image`) VALUES
 
 CREATE TABLE `business` (
   `ID` int(11) NOT NULL,
-  `local_range` varchar(300) NOT NULL,
+  `latitude` varchar(300) NOT NULL,
+  `longitude` varchar(300) NOT NULL,
   `name` varchar(300) NOT NULL,
   `description` varchar(300) NOT NULL,
   `website` varchar(300) NOT NULL,
   `period` date NOT NULL,
-  `photo` varchar(300) NOT NULL,
-  `comment_id` varchar(300) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `products_id` varchar(300) NOT NULL,
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -64,8 +62,8 @@ CREATE TABLE `business` (
 -- Extraindo dados da tabela `business`
 --
 
-INSERT INTO `business` (`ID`, `local_range`, `name`, `description`, `website`, `period`, `photo`, `comment_id`, `category_id`, `products_id`, `date_created`) VALUES
-(1, '-23.4409030,-46.7495050', 'PC Eletrônicas', 'Peças e componentes eletrônicos para pc''s e mac''s.', 'http://pceletronicas.com.br', '2015-06-08', '1.jpg', '1', 1, '1', '2015-06-08');
+INSERT INTO `business` (`ID`, `latitude`, `longitude`, `name`, `description`, `website`, `period`, `category_id`, `date_created`) VALUES
+(1, '-23.4409030,-46.7495050', '', 'PC Eletrônicas', 'Peças e componentes eletrônicos para pc''s e mac''s.', 'http://pceletronicas.com.br', '2015-06-08', 1, '2015-06-08');
 
 -- --------------------------------------------------------
 
@@ -110,21 +108,45 @@ INSERT INTO `comment` (`ID`, `value`, `user_id`, `product_id`, `date_created`) V
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `heat_level`
+--
+
+CREATE TABLE `heat_level` (
+  `ID` tinyint(4) NOT NULL,
+  `level` smallint(6) NOT NULL DEFAULT '5',
+  `product_id` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `photos`
+--
+
+CREATE TABLE `photos` (
+  `ID` tinyint(4) NOT NULL,
+  `value` varchar(300) NOT NULL,
+  `product_id` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `product`
 --
 
 CREATE TABLE `product` (
   `ID` int(11) NOT NULL,
-  `latxlong` varchar(300) NOT NULL,
+  `latitude` varchar(300) NOT NULL,
+  `longitude` varchar(300) NOT NULL,
   `name` varchar(300) NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `period` date NOT NULL,
-  `photos` varchar(300) NOT NULL,
   `description` varchar(300) NOT NULL,
-  `visibility` tinyint(1) NOT NULL,
+  `visibility_id` tinyint(1) NOT NULL,
   `category_id` int(11) NOT NULL,
+  `business_id` tinyint(4) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `coments_id` varchar(300) NOT NULL,
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -132,17 +154,17 @@ CREATE TABLE `product` (
 -- Extraindo dados da tabela `product`
 --
 
-INSERT INTO `product` (`ID`, `latxlong`, `name`, `price`, `period`, `photos`, `description`, `visibility`, `category_id`, `user_id`, `coments_id`, `date_created`) VALUES
-(1, '-23.4409008', 'Calcinhas', '5', '2014-12-03', '1.jpg', 'Esse produto superou todas as minhas expectativas.', 1, 1, 1, '2', '2015-06-08'),
-(2, '-23.0000000', 'Camiseta', '30', '2015-07-22', '2.jpg', 'Muito Legal', 2, 1, 1, '1', '2015-07-16'),
-(9, '-12.0000000', 'Camiseta Obrigado Manchete', '10', '2015-09-15', '3.jpg', 'Camisa de homenagem', 1, 1, 1, '0', '2015-09-15'),
-(11, '0.0000000', 'Shorts Fogo Fatuo', '10', '2015-09-15', '3.jpg', 'Shorts undergrounds', 1, 1, 1, '0', '2015-09-15'),
-(12, '0.0000000', 'Casa para alugar', '500', '0000-00-00', 'casa.jpg', 'Uma casa para aluguel muito barata', 1, 1, 1, '', '2015-09-15'),
-(13, '0.0000000', 'Camiseta Esse é o Jovem Nerd', '49', '2015-09-16', 'eventos.jpg', 'Camiseta lisa, feita de algodão anti-alérgico.', 1, 1, 1, '', '2015-09-15'),
-(14, '0.0000000', 'Cachorro', '1', '2015-09-16', 'http://clubeparacachorros.com.br/wp-content/uploads/2015/05/mitos-e-verdades-sobre-os-cachorros.jpg', 'cachorro a venda', 1, 1, 0, '', '2015-09-15'),
-(16, '-10.0000000', 'Camiseta Obrigado Manchete', '49', '2015-09-16', 'eventos.jpg', 'Camiseta lisa, feita de algodão anti-alérgico.', 1, 2, 1, '', '2015-09-16'),
-(17, '-5.0000000', 'Camisa', '50', '2015-09-16', 'fotos.jpg', 'camisa lisa', 2, 1, 1, '', '2015-09-13'),
-(18, '-5.0000000', 'CD do Depeche Mode', '50', '2015-09-16', 'fotos.jpg', 'Mídia zerada, sem nenhum risco.', 1, 1, 1, '', '2015-09-13');
+INSERT INTO `product` (`ID`, `latitude`, `longitude`, `name`, `price`, `period`, `description`, `visibility_id`, `category_id`, `business_id`, `user_id`, `date_created`) VALUES
+(1, '-23.4409008', '0', 'Calcinhas', '5', '2014-12-03', 'Esse produto superou todas as minhas expectativas.', 1, 1, 1, 1, '2015-06-08'),
+(2, '-23.0000000', '0', 'Camiseta', '30', '2015-07-22', 'Muito Legal', 2, 1, 0, 1, '2015-07-16'),
+(9, '-12.0000000', '0', 'Camiseta Obrigado Manchete', '10', '2015-09-15', 'Camisa de homenagem', 1, 1, 0, 1, '2015-09-15'),
+(11, '0.0000000', '0', 'Shorts Fogo Fatuo', '10', '2015-09-15', 'Shorts undergrounds', 1, 1, 0, 1, '2015-09-15'),
+(12, '0.0000000', '0', 'Casa para alugar', '500', '0000-00-00', 'Uma casa para aluguel muito barata', 1, 1, 0, 1, '2015-09-15'),
+(13, '0.0000000', '0', 'Camiseta Esse é o Jovem Nerd', '49', '2015-09-16', 'Camiseta lisa, feita de algodão anti-alérgico.', 1, 1, 0, 1, '2015-09-15'),
+(14, '0.0000000', '0', 'Cachorro', '1', '2015-09-16', 'cachorro a venda', 1, 1, 0, 0, '2015-09-15'),
+(16, '-10.0000000', '0', 'Camiseta Obrigado Manchete', '49', '2015-09-16', 'Camiseta lisa, feita de algodão anti-alérgico.', 1, 2, 0, 1, '2015-09-16'),
+(17, '-5.0000000', '0', 'Camisa', '50', '2015-09-16', 'camisa lisa', 2, 1, 0, 1, '2015-09-13'),
+(18, '-5.0000000', '0', 'CD do Depeche Mode', '50', '2015-09-16', 'Mídia zerada, sem nenhum risco.', 1, 1, 0, 1, '2015-09-13');
 
 -- --------------------------------------------------------
 
@@ -175,6 +197,25 @@ INSERT INTO `user` (`ID`, `name`, `nickname`, `password`, `age`, `address`, `pho
 (1, 'Iran José Alves', 'iranalves85', 'Depeche0', 30, 'Av.: Alexios Jafet, 1811. Jd. Ipanema - São Paulo', '3x4.jpg', '2015-06-08', '1,2', '0', '0', -23.440903, 1, 1),
 (2, 'Reginaldo Silva', 'regis_silva', '475927', 22, 'Rua Alexios Jafet 1280', 'img-.jpg', '2015-06-10', '1,2,3', '1,2,3', '1,2,3', -30, 0, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `visibility`
+--
+
+CREATE TABLE `visibility` (
+  `ID` int(11) NOT NULL,
+  `name` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `visibility`
+--
+
+INSERT INTO `visibility` (`ID`, `name`) VALUES
+(1, 'private'),
+(2, 'public');
+
 --
 -- Indexes for dumped tables
 --
@@ -205,6 +246,18 @@ ALTER TABLE `comment`
   ADD KEY `perfil` (`user_id`);
 
 --
+-- Indexes for table `heat_level`
+--
+ALTER TABLE `heat_level`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -214,6 +267,12 @@ ALTER TABLE `product`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `visibility`
+--
+ALTER TABLE `visibility`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -241,6 +300,16 @@ ALTER TABLE `category`
 ALTER TABLE `comment`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `heat_level`
+--
+ALTER TABLE `heat_level`
+  MODIFY `ID` tinyint(4) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `ID` tinyint(4) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
@@ -250,6 +319,11 @@ ALTER TABLE `product`
 --
 ALTER TABLE `user`
   MODIFY `ID` smallint(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `visibility`
+--
+ALTER TABLE `visibility`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -12,12 +12,14 @@ class Product extends Connect{
         $user->user_has_access();
 
         $result = $this->pdo->get( 'product',
-        [   '[>]visibilty'      => ['visibility' => 'id'],
-            '[>]category_id'    => ['category' => 'id'],
-            '[>]user_id'        => ['user' => 'id'],  
-            '[>]comment_id'     => ['comment' => 'id']  
+        [   '[>]visibility'  => ['visibility_id' => 'ID'],
+            '[>]category'    => ['category_id' => 'ID'],
+            '[>]user'        => ['user_id' => 'ID'],  
+            '[>]business'    => ['business_id' => 'ID']  
+        ],[ 
+            'visibility.name(visibility)','category.name(category)','user.name(user)', 'business.name(business)'
         ],
-        [   'product.id' => $id ]);
+        [   'product.ID' => $id ]);
 
         //Interar sobre cada plano e retornar atividades e agregar ao array        
         //$result['activitys'] = $this->getListActivityPlan($user, $id);         
